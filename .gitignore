@@ -1,0 +1,11 @@
+
+target
+# Compiled class file
+*.class
+# Log file
+*.log
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
