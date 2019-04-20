@@ -1,5 +1,5 @@
 Feature: In order to reduce confusion with Roman Numerals
-  As A reader of roman numerals
+  As a reader of roman numerals in a movie studio
   I want to translate the numbers to Arabic numbers
 
 Scenario translate simple numbers
@@ -9,7 +9,7 @@ Scenario translate simple numbers
   | Roman Numeral | Arabic Number |
   | I             | 1 |
   | V             | 5 |
-  | X          | 10 |
+  | X         	  | 10 |
   | L             | 50 |
   | C             | 100 |
   | D             | 500 |
@@ -18,14 +18,14 @@ Scenario translate simple numbers
   | #             | Invalid Digit |
   | 2             | Invalid Digit |
 
-Scenario translate common subtraction number combinations
+Scenario translate Roman number combinations
   Given a Roman Number simple combination
   When I ask for a translation
   Then I get the correct simple subtraction combination translation in Arabic numbers:
 | Roman Numeral | Arabic Number |
 | IV             | 4 |
 | IX             | 9 |
-| XC         | 90 |
+| XC         	 | 90 |
 | XL             | 40 |
 | CD             | 400 |
 | CM             | 900 |
@@ -43,3 +43,15 @@ Scenario flag malformed numbers
   | XD          | Invalid Number - Do not subtract a number from one that is more than 10 times greater |
   | CM          | Invalid Number - Do not subtract a number from one that is more than 10 times greater |
   | XM          | Invalid Number - Do not subtract a number from one that is more than 10 times greater |
+
+
+  Scenario Outline: translate simple numbers to Roman
+    When I ask for a Roman translation of a "<Arabic Number>"
+    Then I get the correct Roman Numeral "<Roman Numeral>"
+    Examples:
+      | Arabic Number | Roman Numeral  |
+      | 1             | I 	|
+      | 5             | V 	|
+      | 256           | CCLVI  	|
+      | 1001          | MI 	|
+      | 1993          | MCMXCI  |
